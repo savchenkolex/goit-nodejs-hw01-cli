@@ -11,9 +11,6 @@ program
 program.parse(process.argv);
 const options = program.opts();
 
-console.log("------------------ new cicle --------------------");
-// console.log(options);
-
 async function invokeAction({action, id, name, email, phone}) {
     switch (action) {
         case 'list':
