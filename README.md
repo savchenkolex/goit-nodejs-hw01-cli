@@ -1,9 +1,11 @@
 # goit-nodejs-hw01-cli
 
 1. Отримуємо і виводимо весь список контактів у вигляді таблиці (console.table)
+```
 node index.js --action="list"
+```
 
-[test result get all contacts 2023-09-30_01-33.png](https://lexsense.trial.rocks/images/hw01/2023-09-30_01-33.png)
+[test result get all contacts](https://lexsense.trial.rocks/images/hw01/2023-09-30_02-21.png)
 
 2. Отримуємо контакт по id і виводимо у консоль об'єкт контакту або null, якщо контакту з таким id не існує.
 ```
