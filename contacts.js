@@ -77,15 +77,27 @@ async function listContacts() {
   
   async function addContact(name, email, phone) {
     // ...твій код. Повертає об'єкт доданого контакту. 
-    
-    const newContact = {
-        id: nanoid(),
-        name,
-        email, 
-        phone,
-    };
+    try {
+        const allContacts = await listContacts();
+        if (!allContacts) {
+            throw new error("A list of all contacts was not received.");
+        }
+        
+        const newContact = {
+            id: nanoid(),
+            name,
+            email, 
+            phone,
+        };
 
-    console.log(newContact);
+        allContacts.push(newContact);
+
+        await fs.writeFile(contactsPath,JSON.stringify(allContacts, '', 2));
+    
+        return newContact;
+    } catch (error) {
+        return error;
+    }
   }
 
 module.exports = {
