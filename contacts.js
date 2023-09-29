@@ -60,10 +60,14 @@ async function listContacts() {
             throw new error("A list of all contacts was not received.");
         }
         
+        const selectedContact = await allContacts.filter((contact) => {
+            return contact.id === contactId;
+        })
+
         const newVersion = allContacts.filter((contact)=>{ return contact.id !== contactId});
         
-        console.log(newVersion);
-        return newVersion;
+        await fs.writeFile(contactsPath,JSON.stringify(newVersion, "", 2));
+        return selectedContact;
 
     } catch (error) {
         return error;
