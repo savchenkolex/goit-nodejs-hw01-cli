@@ -24,7 +24,7 @@ async function listContacts() {
     if (!contactId) {
         return "ID is required";
     }
-
+    
     try {
         const allContacts = await listContacts();
 
@@ -35,9 +35,11 @@ async function listContacts() {
         const selectedContact = allContacts.filter((contact)=>{ 
             return contact.id === contactId;
         });
-    
+        if (selectedContact.length === 0) {
+            return "Contact not found";
+        }
         // console.log(selectedContact);
-        return selectedContact || null;
+        return selectedContact;
 
     } catch (error) {
         return error;
